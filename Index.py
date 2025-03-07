@@ -1,5 +1,7 @@
 from funcion_listados.nueva_cuenta import IngresoDB, NuevaCuenta
 from funcion_listados.ingreso_contacto import IngresoDB, IngresoContactos
+from funcion_listados.eliminar_contacto import IngresoDB, EliminarContacto
+from funcion_listados.mostrar_contactos import IngresoDB, MostarContactos
 
 
 ruta_db = "C:/Users/POWER/contactos_lista.db"
@@ -11,9 +13,9 @@ while True:
             Bienvenido a su listado de contactos.
             1. Crea una cuenta.
             2. Ingresa el contacto.
-            4. Eliminar contactos.
-            5. Mostar contactos
-            6. Salir.
+            3. Eliminar contactos.
+            4. Mostar contactos
+            5. Salir.
         """
         )
     try:
@@ -25,15 +27,15 @@ while True:
             new_contacto = IngresoContactos(conexion)
             new_contacto.nuevos_contactos()
         elif usuario == 3:
-            print("Proxima funcion.")
+            eliminar_contacto = EliminarContacto(conexion)
+            eliminar_contacto.delete_contacto()
         elif usuario == 4:
-            print("Proxima funcion.")
+            mostrar_contactos = MostarContactos(conexion)
+            mostrar_contactos.show_contactos()
         elif usuario == 5:
-            print("Proxima funcion.")
-        elif usuario == 6:
             print("Gracias por usar tu listado de contectos, vuelve pronto.")
             break
         else:
-            print("Ingresa un valor adecuado, entre 1-4")
+            print("Ingresa un valor adecuado, entre 1-5.")
     except Exception as error:
         print(f"El programa tuvo un error: {error}.")
